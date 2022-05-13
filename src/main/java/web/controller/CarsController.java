@@ -20,15 +20,7 @@ public class CarsController {
     @GetMapping(value = "/cars")
     public String carList(@RequestParam(value = "count", required = false, defaultValue = "5") int count,
                           Model model) {
-        CarServiceImpl carService = new CarServiceImpl();
-        List<Car> cars;
-        if (n == null) {
-            cars = carService.getCarList(Car.createList());
-        } else {
-            cars = carService.getCarList(Car.createList(), n);
-        }
-        model.addAttribute("cars", cars);
+        model.addAttribute("cars", carService.getCarList(count));
         return "cars";
     }
-    
 }
